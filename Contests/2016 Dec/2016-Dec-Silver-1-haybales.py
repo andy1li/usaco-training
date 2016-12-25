@@ -3,18 +3,14 @@
 # LANG: python 2.7
 
 from __future__ import print_function
-from bisect     import bisect_left
+from bisect     import bisect
 
 def solve(line):
     a, b = map(int, line.split())
-    lo   = bisect_left(haybales, a)
-    hi   = bisect_left(haybales, b)
-
-    haybales.append(float('inf'))
+    lo   = bisect(haybales, a-1)
+    hi   = bisect(haybales, b)
     
-    res  = hi - lo + (haybales[hi] == b)
-
-    return str(res)+'\n'
+    return str(hi - lo)+'\n'
 
 PROG = 'haybales'
 with open(PROG+'.in',  'r') as fin,\
