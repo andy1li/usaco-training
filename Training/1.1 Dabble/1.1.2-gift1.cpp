@@ -18,7 +18,7 @@ int main() {
 
     int n; fin >> n;
 
-    vector<string>   names(n);
+    vector<string> names(n);
     map<string, int> balance;
     for (int i = 0; i < n; i++) {
         string name; fin >> name;

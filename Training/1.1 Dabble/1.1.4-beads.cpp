@@ -29,7 +29,7 @@ int longest(string s) {
 }
 
 int solve(string beads, int i) {
-    beads   += beads;
+    beads += beads;
     string a = beads.substr(0, i);
     reverse(a.begin(), a.end());
     string b = beads.substr(i);

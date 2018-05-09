@@ -38,7 +38,7 @@ int main() {
         }
     }
 
-    for (int i = 0; i < thirteenths.size(); ++i) {
+    for (int i = 0; i < thirteenths.size(); i++) {
         if (i < thirteenths.size() - 1) 
             fout << thirteenths[i] << ' ';
         else                            

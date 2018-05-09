@@ -7,7 +7,7 @@ def days_in_month(year, month):
     elif month in [4, 6, 9, 11]: return 30
     else                       : return 31
 
-with open('friday.in', 'r') as fin:
+with open('friday.in') as fin:
     n  = int(fin.readline())
 
     thirteenths = [0] * 7

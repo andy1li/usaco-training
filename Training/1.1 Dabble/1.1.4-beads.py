@@ -3,8 +3,8 @@ from __future__  import print_function
 def longest(s):
     res = 0; color = ''
     for x in s:
-        if       color and x != 'w' and x != color: break
-        elif not color and x != 'w'               : color = x
+        if not color and x != 'w'               : color = x
+        elif   color and x != 'w' and x != color: break
         res += 1
     return res
 
@@ -14,7 +14,7 @@ def solve(beads, i):
     b = beads[i:]
     return longest(a) + longest(b)
 
-with open('beads.in', 'r') as fin:
+with open('beads.in') as fin:
     n     = int(fin.readline())
     beads = fin.readline().strip()
     

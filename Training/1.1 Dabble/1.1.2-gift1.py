@@ -1,8 +1,7 @@
 from __future__  import print_function
 from collections import OrderedDict
 
-
-with open('gift1.in', 'r') as fin:
+with open('gift1.in') as fin:
     n       = int(fin.readline())
     balance = OrderedDict([ (fin.readline().strip(), 0)
                              for _ in range(n) ])

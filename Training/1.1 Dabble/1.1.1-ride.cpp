@@ -10,7 +10,7 @@ LANG: C++
 
 using namespace std;
 
-int hash(const string &name) {
+int get_hash(const string &name) {
     int res = 1;
 
     for (int i = 0; i < name.size(); i++) {
@@ -29,7 +29,7 @@ int main() {
     fin >> comet;
     fin >> group;
 
-    if (hash(comet) == hash(group)) {
+    if (get_hash(comet) == get_hash(group)) {
         fout << "GO" << endl;
     } else {
         fout << "STAY" << endl;
