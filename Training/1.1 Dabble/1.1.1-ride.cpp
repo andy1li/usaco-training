@@ -4,36 +4,31 @@ PROG: ride
 LANG: C++         
 */
 
-#include <fstream>
-#include <iostream>
-#include <string>
-
+#include <bits/stdc++.h>
 using namespace std;
 
+#define foreach(x, xs) for (auto x=xs.begin(); x!=xs.end(); x++)
+
+/*----------------------------------------------------------------------------*/
+
 int get_hash(const string &name) {
-    int res = 1;
-
-    for (int i = 0; i < name.size(); i++) {
-        res *= (name[i] - 'A' + 1);
-        res %= 47;
+    int hash = 1;
+    foreach (x, name) {
+        hash *= (*x - 'A' + 1);
+        hash %= 47;
     }
-
-    return res;
+    return hash;
 }
 
+/*----------------------------------------------------------------------------*/
+
 int main() {
-    ifstream fin  ("ride.in");
-    ofstream fout ("ride.out");
+    freopen("ride.in",  "r", stdin);
+    freopen("ride.out", "w", stdout);
 
     string comet, group;
-    fin >> comet;
-    fin >> group;
+    cin >> comet >> group;
 
-    if (get_hash(comet) == get_hash(group)) {
-        fout << "GO" << endl;
-    } else {
-        fout << "STAY" << endl;
-    }
-
-    return 0;
+    string ans = (get_hash(comet) == get_hash(group)) ? "GO" : "STAY";
+    cout << ans << endl;
 }
