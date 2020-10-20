@@ -1,49 +1,47 @@
 /*
 ID:   andy1li
-PROG: gift1
 LANG: C++ 
+TASK: gift1
 */
 
-#include <fstream>
-#include <iostream>
-#include <map>
-#include <string>
-#include <vector>
-
+#include <bits/stdc++.h>
 using namespace std;
 
-int main() {
-    ifstream fin  ("gift1.in");
-    ofstream fout ("gift1.out");
+#define range(stop) for (size_t i=0; i<stop; ++i)
 
-    int n; fin >> n;
+/*----------------------------------------------------------------------------*/
+
+void solve() {
+    int n; cin >> n;
 
     vector<string> names(n);
     map<string, int> balance;
-    for (int i = 0; i < n; i++) {
-        string name; fin >> name;
-
+    range(n) {
+        string name; cin >> name;
         names[i] = name;
         balance[name] = 0;
     }
 
-    for (int i = 0; i < n; i++) {
-        string giver; fin >> giver;
-        int amount, numReceivers; fin >> amount >> numReceivers;
+    range(n) {
+        string giver; cin >> giver;
+        int amount, numReceivers; cin >> amount >> numReceivers;
 
-        for (int i = 0; i < numReceivers; i++) {
-            string receiver; fin >> receiver;
-
+        range(numReceivers) {
+            string receiver; cin >> receiver;
             balance[giver]    -= amount / numReceivers;
             balance[receiver] += amount / numReceivers;
         }
     }
     
-    for (int i = 0; i < n; i++) {
-        string name = names[i];
-        // fout << name << ' ' << balance[name] << endl;
+    for (string name: names) {
         cout << name << ' ' << balance[name] << endl;
     }
+}
 
-    return 0;
+/*----------------------------------------------------------------------------*/
+
+int main() {
+    freopen("gift1.in",  "r", stdin);
+    freopen("gift1.out", "w", stdout);
+    solve();
 }

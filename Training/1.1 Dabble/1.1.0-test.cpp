@@ -1,7 +1,7 @@
 /*
 ID:   andy1li
-PROG: test
 LANG: C++         
+TASK: test
 */
 
 #include <bits/stdc++.h>

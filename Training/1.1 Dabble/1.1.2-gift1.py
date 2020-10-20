@@ -1,19 +1,29 @@
-from __future__  import print_function
-from collections import OrderedDict
+'''
+ID:   andy1li
+LANG: PYTHON3
+TASK: gift1
+'''
 
-with open('gift1.in') as fin:
-    n       = int(fin.readline())
-    balance = OrderedDict([ (fin.readline().strip(), 0)
-                             for _ in range(n) ])
+def solve():
+    n = int(input())
+    balance = { input(): 0 for _ in range(n) }
 
     for _ in range(n):
-        giver = fin.readline().strip()
-        amount, num_receivers = map(int, fin.readline().split())
+        giver = input()
+        amount, num_receivers = map(int, input().split())
 
-        receivers = (fin.readline().strip() for _ in range(num_receivers))
-        for r in receivers:
-            balance[giver] -= amount / num_receivers
-            balance[r]     += amount / num_receivers
+        for r in range(num_receivers):
+            balance[giver]   -= amount // num_receivers
+            balance[input()] += amount // num_receivers
 
     for name, amount in balance.items():
-        print(name, amount)
+        print_line(f'{name.strip()} {amount}')
+
+#------------------------------------------------------------------------------#
+
+def print_line(line): print(line); f_out.write( f'{line}\n' )
+
+task = 'gift1'
+with open(task+'.in') as f_in, open(task+'.out', 'w') as f_out:
+    input = f_in.readline
+    solve()

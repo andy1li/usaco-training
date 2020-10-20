@@ -14,7 +14,7 @@ def get_hash(name):
     ords = map(get_ord, name)
     return reduce(mul, ords) % 47
 
-#------------------------------------------------------------------------------
+#------------------------------------------------------------------------------#
 
 def print_line(line): print(line); f_out.write( f'{line}\n' )
 
