@@ -1,49 +1,50 @@
 /*
 ID:   andy1li
-PROG: friday
-LANG: C++11
+LANG: C++
+TASK: friday
 */
 
-#include <fstream>
-#include <iostream>
-#include <vector>
-
+#include <bits/stdc++.h>
 using namespace std;
+using vi = vector<int>;
 
-int isLeap(int year) {
+#define range(stop) for (size_t i=0; i<stop; ++i)
+#define rep(i, start, stop) for (size_t i=start; i<stop; ++i)
+
+/*----------------------------------------------------------------------------*/
+
+int is_leap(int year) {
     return year%4==0 && (year%100 != 0 || year%400 == 0);
 }
 
-int daysInMonth(int year, int month) {
-    switch (month) {
-        case 2:                          return 28 + isLeap(year);
-        case 4: case 6: case 9: case 11: return 30;
-        default:                         return 31;
-    }
+int days_in_month(int year, int month) {
+    vi days = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+    return days[month] + (month == 1 && is_leap(year));
 }
 
-int main() {
-    ifstream fin  ("friday.in");
-    ofstream fout ("friday.out");
+void solve() {
+    int n; cin >> n;
 
-    int n; fin >> n;
+    vi count(7, 0);
+    int day_of_week = 0; // day of week: January 13, 1900 was a Saturday = 0
 
-    vector<int> thirteenths(7, 0);
-    int dayOfWeek  = 0; // day of week: January 13, 1900 was a Saturday = 0
-
-    for (int year = 1900; year < 1900+n; year++) {
-        for (int month = 1; month < 13; month++) {
-            thirteenths[dayOfWeek]++;
-            dayOfWeek = (dayOfWeek + daysInMonth(year, month)) % 7;
+    rep(year, 1900, 1900+n) {
+        rep(month, 0, 12) {
+            count[day_of_week]++;
+            day_of_week += days_in_month(year, month)
+            day_of_week %= 7
         }
     }
 
-    for (int i = 0; i < thirteenths.size(); i++) {
-        if (i < thirteenths.size() - 1) 
-            fout << thirteenths[i] << ' ';
-        else                            
-            fout << thirteenths[i] << endl;
+    range(7) { 
+        cout << count[i] << ((i < 6) ? ' ' : '\n'); 
     }
+}
 
-    return 0;
+/*----------------------------------------------------------------------------*/
+
+int main() {
+    freopen("friday.in",  "r", stdin);
+    freopen("friday.out", "w", stdout);
+    solve();
 }
