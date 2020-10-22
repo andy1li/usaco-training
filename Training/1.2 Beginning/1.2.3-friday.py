@@ -4,11 +4,12 @@ LANG: PYTHON3
 TASK: friday
 '''
 
-def is_leap(year): return year%4==0 and (year%100 != 0 or year%400 == 0)
+def is_leap(year): 
+    return year%4==0 and (year%100 != 0 or year%400 == 0)
 
 def days_in_month(year, month):
-    days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-    return days[month] + (month == 1 and is_leap(year))
+    length = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    return length[month] + (month == 1 and is_leap(year))
 
 def solve():
     n = int(input())
@@ -20,7 +21,7 @@ def solve():
             day_of_week += days_in_month(year, month)
             day_of_week %= 7
 
-    print_line(' '.join(map(str, (count[day] for day in range(7)))))
+    print_line(' '.join(str(count[day]) for day in range(7)))
 
 #------------------------------------------------------------------------------#
 

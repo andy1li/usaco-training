@@ -7,7 +7,7 @@ TASK: gift1
 #include <bits/stdc++.h>
 using namespace std;
 
-#define range(stop) for (size_t i=0; i<stop; ++i)
+#define FOR(stop) for (size_t i=0; i<stop; ++i)
 
 /*----------------------------------------------------------------------------*/
 
@@ -16,17 +16,17 @@ void solve() {
 
     vector<string> names(n);
     map<string, int> balance;
-    range(n) {
+    FOR(n) {
         string name; cin >> name;
         names[i] = name;
         balance[name] = 0;
     }
 
-    range(n) {
+    FOR(n) {
         string giver; cin >> giver;
         int amount, numReceivers; cin >> amount >> numReceivers;
 
-        range(numReceivers) {
+        FOR(numReceivers) {
             string receiver; cin >> receiver;
             balance[giver]    -= amount / numReceivers;
             balance[receiver] += amount / numReceivers;
