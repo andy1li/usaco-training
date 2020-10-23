@@ -10,7 +10,7 @@ using vi = vector<int>;
 
 #define range(i, start, stop) for (size_t i=start; i<stop; ++i)
 #define FOR(stop) for (size_t i=0; i<stop; ++i)
-#define print_list(v) FOR(v.size()) cout<<count[i]<<((i<v.size()-1)?' ':'\n');
+#define print_list(xs) FOR(xs.size()) cout<<xs[i]<<((i<xs.size()-1)?' ':'\n');
 
 /*----------------------------------------------------------------------------*/
 
@@ -29,9 +29,8 @@ void solve() {
 
     range(year, 1900, 1900+n) {
         range(month, 0, 12) {
-            count[day_of_week]++;
+            count[day_of_week %= 7]++;
             day_of_week += days_in_month(year, month);
-            day_of_week %= 7;
         }
     }
     print_list(count)

@@ -17,9 +17,8 @@ def solve():
     day_of_week = 0 # day of week: January 13, 1900 was a Saturday = 0 
     for year in range(1900, 1900+n):
         for month in range(12):
-            count[day_of_week] += 1
+            count[day_of_week % 7] += 1
             day_of_week += days_in_month(year, month)
-            day_of_week %= 7
 
     print_line(' '.join(str(count[day]) for day in range(7)))
 
