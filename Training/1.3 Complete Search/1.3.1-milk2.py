@@ -7,19 +7,18 @@ TASK: milk2
 from itertools import groupby
 
 def solve():
-    time = [0] * 10**6
+    time = ['0'] * 10**6
     for _ in range(int(input())):
         a, b = map(int, input().split())
-        time[a:b] = [1] * (b-a)
-    
+        time[a:b] = ['1'] * (b-a)
+   
+    time = ''.join(time).strip('0') 
     groups = [(k, len(list(g))) for k, g in groupby(time)] 
-    if groups[ 0][0] == 0: groups.pop(0) 
-    if groups[-1][0] == 0: groups.pop()
 
     milking = idle = 0 
     for k, cnt in groups:
-        if k == 1: milking = max(milking, cnt)
-        if k == 0: idle = max(idle, cnt)
+        if k == '1': milking = max(milking, cnt)
+        if k == '0': idle = max(idle, cnt)
     print_line(f'{milking} {idle}')
 
 #------------------------------------------------------------------------------#
