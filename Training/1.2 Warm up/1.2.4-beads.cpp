@@ -12,11 +12,11 @@ using namespace std;
 
 /*----------------------------------------------------------------------------*/
 
-int collect(string s, char color = '0') {
+int collect(string s, char color = 'w') {
     FOR(s.size()) {
         char x = s[i];
         if (x == 'w') continue;
-        if (color == '0') color = x;
+        if (color == 'w') color = x;
         else if (x != color) return i;
     }
     return s.size();
