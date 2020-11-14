@@ -14,8 +14,7 @@ def solve():
         product = str(three * two)
 
         return (
-            len(fst) == 3
-        and len(snd) == 3
+            len(fst) == len(snd) == 3 and len(product) == 4
         and all(set(x).issubset(A) for x in [fst, snd, product])
         )
         
