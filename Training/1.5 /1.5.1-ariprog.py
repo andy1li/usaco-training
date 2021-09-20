@@ -9,12 +9,12 @@ from itertools import product
 def solve():
     N, M = int(input()), int(input())
     sq = (i*i for i in range(M+1))
-    check = frozenset(a + b for a, b in product(sq, repeat=2))
-    bsq = sorted(check)
+    check = set(a + b for a, b in product(sq, repeat=2))
+    n, bsq = len(check), sorted(check, reverse=True)
  
     ans = []
-    for i in reversed(range(len(bsq))):
-        for j in reversed(range(i)):
+    for i in range(n-2):
+        for j in range(i+1, n-1):
             last, pen = bsq[i], bsq[j]
             step = last - pen
             first = last - step * (N-1)
