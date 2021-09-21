@@ -20,8 +20,7 @@ def solve():
             first = last - step * (N-1)
             if first < 0: break
             if all(first + step*i in check for i in range(N-2)):
-                ans.append((first, step))
-                
+                ans.append((first, step)) 
     ans = sorted(ans, key=lambda pair: (pair[1], pair[0]))
 
     print_line(
